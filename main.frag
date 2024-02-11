@@ -343,7 +343,7 @@ float gnoise (vec3 p)
     float count = 12.0;
     for (float i = 0.; i < count; i++)
     {
-        p.z -= u_time*0.025 + result*0.5;
+        p.z -= u_time*0.015 + result*0.5;
         //p.z += u_time*0.25;
         //p = rotZ(p, iTime*0.01+i);
        
@@ -399,7 +399,7 @@ void main() {
 	vec3 p = vec3(uv, length(uv)*0.5);
 	float gn = gnoise(p*0.5);
 
-	col = mix(col, vec3(pow((gn+0.9), 0.65)*0.35), max(0.0, uv.y*0.43));
+	col = mix(col, vec3(pow((gn+0.7), 0.65)*0.3), max(0.0, uv.y*0.43 + (uv.x*0.15)));
 
 	//Gamma correct
 	//col = pow(col, vec3(1.0/2.2));
